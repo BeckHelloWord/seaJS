@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sea.js</title>
+</head>
+
+<body>
+    <h1 id="title">seajs demo</h1>
+    <!-- 参考：https://www.jianshu.com/p/ebdf2233e3fe -->
+    <script src="./sea-module/sea.js"></script>
+    <script>
+        seajs.config({
+            // 以seajs文件的位置出发
+            alias: {
+                'changeText': '../static/changeText.js',
+                'jquery': 'jquery/jquery.js',
+                'main': './static/main.js'
+            }
+        });
+        seajs.use(['main', 'jquery'], function (main, $) {
+            $('#title').after('<button id="show">showTxt</button>');
+            $('#show').on('click', function () {
+                main.showTxt();
+            })
+        })
+    </script>
+</body>
+
+</html>
